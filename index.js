@@ -12,7 +12,6 @@ const cors = require('cors');
 mongoose.connect('mongodb://localhost:auth/auth', {useNewUrlParser:true}).then(
     function(res){
         console.log('MongoDB connected. ', res);
-
     }
 ).catch(function(err){
     console.log('An Error Occured: ', err);

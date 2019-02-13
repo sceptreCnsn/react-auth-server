@@ -24,7 +24,7 @@ exports.signup = function(req, res, next) {
 
     //If a user with email does exist return an error
     if (user) {
-      return res.status(422);
+      return res.status(422).send({ error: 'This user already exists.' });
     }
 
     // If a user with email doenst exist, create and save user record
@@ -33,7 +33,7 @@ exports.signup = function(req, res, next) {
       password: password
     });
 
-    newUser.save(function(err) {
+    newUser.save( function(err) {
       if (err) {
         return next(err);
       }
