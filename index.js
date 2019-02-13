@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Db Setup
 mongoose.connect('mongodb://localhost:auth/auth', {useNewUrlParser:true}).then(
@@ -19,6 +20,7 @@ mongoose.connect('mongodb://localhost:auth/auth', {useNewUrlParser:true}).then(
 
 // App Setup - morgan for logging bodyParser for parsing requests
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
